@@ -11,11 +11,13 @@ export type Profile = {
 export interface AuthReducer {
   isAuthenticated: boolean;
   profile: Profile;
+  dbProfile: Profile;
 }
 
 const initialState: AuthReducer = {
   isAuthenticated: false,
-  profile: null
+  profile: null,
+  dbProfile: null
 };
 
 const authReducer = (
@@ -46,6 +48,18 @@ const authReducer = (
         ...state,
         profile: null
       };
+    // new
+    case ACTION_TYPES.SET_DB_PROFILE:
+      return {
+        ...state,
+        dbProfile: action.payload
+      };
+    case ACTION_TYPES.REMOVE_DB_PROFILE:
+      return {
+        ...state,
+        dbProfile: null
+      };
+    
     default:
       return state;
   }

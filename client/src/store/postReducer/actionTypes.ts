@@ -1,0 +1,5 @@
+export const FETCH_DB_POST = 'auth/FETCH_DB_POST';
+export const REMOVE_DB_POST = 'auth/REMOVE_DB_POST';
+
+export const FETCH_DB_POST_COMMENTS = 'auth/FETCH_DB_POST_COMMENTS';
+export const REMOVE_DB_POST_COMMENTS = 'auth/REMOVE_DB_POST_COMMENTS';
