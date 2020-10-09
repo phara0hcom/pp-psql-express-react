@@ -38,9 +38,21 @@ const Header: React.FC<PropsFromRedux> = ({ isAuthenticated }) => {
         Private Route
       </Link>
       {!isAuthenticated ? (
-        <button onClick={() => auth.login()}>Login</button>
+        <button
+          onClick={() => {
+            // auth.login()
+          }}
+        >
+          Login
+        </button>
       ) : (
-        <button onClick={() => auth.logout()}>Logout</button>
+        <button
+          onClick={() => {
+            // auth.logout()
+          }}
+        >
+          Logout
+        </button>
       )}
       <br />
       <br />

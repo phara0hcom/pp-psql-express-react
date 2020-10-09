@@ -18,7 +18,13 @@ const initialState: AuthReducer = {
   profile: null,
 };
 
-const authReducer = (state = initialState, action) => {
+const authReducer = (
+  state = initialState,
+  action: {
+    type: string;
+    payload?: Profile;
+  }
+) => {
   switch (action.type) {
     case ACTION_TYPES.LOGIN_SUCCESS:
       return {

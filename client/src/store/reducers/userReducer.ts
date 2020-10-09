@@ -8,7 +8,13 @@ const initialState = {
   userText: '',
 };
 
-const userReducer = (state = initialState, action) => {
+const userReducer = (
+  state = initialState,
+  action: {
+    type: string;
+    payload: string;
+  }
+) => {
   switch (action.type) {
     case ACTION_TYPES.USER_INPUT:
       return {

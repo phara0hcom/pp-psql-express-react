@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect, useDispatch, ConnectedProps } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 
 import * as ACTIONS from '../store/actions/actions';
 import { RootState } from '../store/reducers';
@@ -11,28 +11,32 @@ const mapStateToProps = (state: RootState) => {
   };
 };
 
-const connector = connect(mapStateToProps);
+const mapDispatchToProps = {
+  action1: () => ACTIONS.SUCCESS,
+  action2: () => ACTIONS.FAILURE,
+  actionCreator1: () => ACTIONS.success(),
+  actionCreator2: () => ACTIONS.failure(),
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-const Container1: React.FC<PropsFromRedux> = ({ stateProp1, userText }) => {
-  const dispatch = useDispatch();
-
+const Container1: React.FC<PropsFromRedux> = ({
+  stateProp1,
+  userText,
+  action1,
+  action2,
+  actionCreator1,
+  actionCreator2,
+}) => {
   return (
     <div>
       <button onClick={() => console.log(stateProp1)}> Get State </button>
-      <button onClick={() => dispatch(ACTIONS.SUCCESS)}>
-        Dispatch Action 1{' '}
-      </button>
-      <button onClick={() => dispatch(ACTIONS.FAILURE)}>
-        Dispatch Action 2{' '}
-      </button>
-      <button onClick={() => dispatch(ACTIONS.success())}>
-        Dispatch Action Creator 1{' '}
-      </button>
-      <button onClick={() => dispatch(ACTIONS.failure())}>
-        Dispatch Action Creator 2{' '}
-      </button>
+      <button onClick={action1}>Dispatch Action 1 </button>
+      <button onClick={action2}>Dispatch Action 2 </button>
+      <button onClick={actionCreator1}>Dispatch Action Creator 1 </button>
+      <button onClick={actionCreator2}>Dispatch Action Creator 2 </button>
       {userText ? <h3> {userText} </h3> : <h3> No User Text </h3>}
       <br />
       {stateProp1 ? <p> stateProp1 is true </p> : <p> stateProp1 is false </p>}

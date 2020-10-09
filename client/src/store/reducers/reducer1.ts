@@ -8,7 +8,12 @@ const initialState: Reducer1 = {
   stateProp1: false,
 };
 
-const reducer1 = (state = initialState, action) => {
+const reducer1 = (
+  state = initialState,
+  action: {
+    type: string;
+  }
+) => {
   switch (action.type) {
     case ACTION_TYPES.SUCCESS:
       return {

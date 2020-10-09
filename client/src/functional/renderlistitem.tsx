@@ -1,6 +1,18 @@
 import React from 'react';
 
-const RenderListItem = (props) => (
+interface RenderListItemProps {
+  location: {
+    state: {
+      list_item: {
+        text: string;
+        num: number;
+        bool: boolean;
+      };
+    };
+  };
+}
+
+const RenderListItem: React.FC<RenderListItemProps> = (props) => (
   <div>
     <h3>{props.location.state.list_item.text}</h3>
     <h4> {props.location.state.list_item.num} </h4>
