@@ -6,12 +6,12 @@ export type Profile = {
   email: string;
   name: string;
   email_verified: boolean;
-} | null;
+};
 
 export interface AuthReducer {
   isAuthenticated: boolean;
-  profile: Profile;
-  dbProfile: Profile;
+  profile: Profile | null;
+  dbProfile: Profile | null;
 }
 
 const initialState: AuthReducer = {
@@ -59,7 +59,7 @@ const authReducer = (
         ...state,
         dbProfile: null
       };
-    
+
     default:
       return state;
   }
