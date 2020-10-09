@@ -1,14 +1,14 @@
-import * as ACTION_TYPES from '../actions/action_types';
+import * as ACTION_TYPES from './actionTypes';
 
-export interface Reducer1 {
+export interface Reducer {
   stateProp1: boolean;
 }
 
-const initialState: Reducer1 = {
+const initialState: Reducer = {
   stateProp1: false
 };
 
-const reducer1 = (
+const reducer = (
   state = initialState,
   action: {
     type: string;
@@ -30,4 +30,4 @@ const reducer1 = (
   }
 };
 
-export default reducer1;
+export default reducer;

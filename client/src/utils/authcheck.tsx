@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 
 // import history from './history';
-import * as ACTIONS from '../store/actions/actions';
-import { RootState } from '../store/reducers';
-import { Profile } from '../store/reducers/authReducer';
+import * as ACTIONS from '../store/authReducer/actions';
+import { RootState } from '../store/';
+import { Profile } from '../store/authReducer/reducer';
 
 const mapStateToProps = (state: RootState) => {
   return {};

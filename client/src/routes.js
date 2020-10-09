@@ -14,7 +14,7 @@ import UnAuthRedirect from './functional/unauthredirect';
 import Home from './functional/home';
 import RenderListItem from './functional/renderlistitem';
 
-import * as ACTIONS from './store/actions/actions';
+import * as ACTIONS from './store/authReducer/actions';
 
 import Auth from './utils/auth';
 import AuthCheck from './utils/authcheck';
@@ -110,7 +110,7 @@ function mapDispatchToProps(dispatch) {
     login_success: () => dispatch(ACTIONS.login_success()),
     login_failure: () => dispatch(ACTIONS.login_failure()),
     addProfile: (profile) => dispatch(ACTIONS.addProfile(profile)),
-    remove_profile: () => dispatch(ACTIONS.remove_profile()),
+    remove_profile: () => dispatch(ACTIONS.remove_profile())
   };
 }
 

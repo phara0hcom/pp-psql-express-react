@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 
-import * as ACTIONS from '../store/actions/actions';
-import { RootState } from '../store/reducers';
+import * as ACTIONS from '../store/userReducer/actions';
+import { RootState } from '../store/';
 
 const mapStateToProps = (state: RootState) => {
   return {

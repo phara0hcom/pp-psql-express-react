@@ -1,7 +1,7 @@
 import React from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 
-import { RootState } from '../store/reducers';
+import { RootState } from '../store/';
 
 const mapStateToProps = (state: RootState) => {
   return {

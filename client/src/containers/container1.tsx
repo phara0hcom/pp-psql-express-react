@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 
-import * as ACTIONS from '../store/actions/actions';
-import { RootState } from '../store/reducers';
+import * as ACTIONS from '../store/reducer/actions';
+import { RootState } from '../store/';
 
 const mapStateToProps = (state: RootState) => {
   return {
-    stateProp1: state.reducer1.stateProp1,
+    stateProp1: state.reducer.stateProp1,
     userText: state.userReducer.userText
   };
 };
