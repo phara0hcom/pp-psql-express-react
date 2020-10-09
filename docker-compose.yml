@@ -1,0 +1,49 @@
+version: "3.8"
+
+x-common-variables: &common-variables
+  REACT_APP_SERVER_PORT: 8000
+  POSTGRES_PASSWORD: postgrespassword
+  POSTGRES_USER: postgresuser
+  POSTGRES_DB: postgresdb
+
+services:
+  postgres:
+    image: postgres:latest
+    build: ./db
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      <<: *common-variables
+    volumes:
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+  server:
+    build: ./server
+    depends_on:
+      - postgres
+    expose:
+      - 8000
+    environment:
+      <<: *common-variables
+    ports:
+      - 8000:8000
+    volumes:
+      - ./server:/server
+    links:
+      - postgres
+    command: npm start
+  client:
+    build: ./client
+    environment:
+      <<: *common-variables
+      NODE_PATH: src
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    volumes:
+      - ./client/src:/app/src
+    links:
+      - server
+    stdin_open: true
+    command: npm start
