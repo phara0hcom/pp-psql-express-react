@@ -15,7 +15,7 @@ export interface AuthReducer {
 
 const initialState: AuthReducer = {
   isAuthenticated: false,
-  profile: null,
+  profile: null
 };
 
 const authReducer = (
@@ -29,22 +29,22 @@ const authReducer = (
     case ACTION_TYPES.LOGIN_SUCCESS:
       return {
         ...state,
-        isAuthenticated: true,
+        isAuthenticated: true
       };
     case ACTION_TYPES.LOGIN_FAILURE:
       return {
         ...state,
-        isAuthenticated: false,
+        isAuthenticated: false
       };
     case ACTION_TYPES.ADD_PROFILE:
       return {
         ...state,
-        profile: action.payload,
+        profile: action.payload
       };
     case ACTION_TYPES.REMOVE_PROFILE:
       return {
         ...state,
-        profile: null,
+        profile: null
       };
     default:
       return state;

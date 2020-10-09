@@ -5,7 +5,7 @@ import { RootState } from '../store/reducers';
 
 const mapStateToProps = (state: RootState) => {
   return {
-    profile: state.authReducer.profile,
+    profile: state.authReducer.profile
   };
 };
 

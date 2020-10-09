@@ -5,7 +5,7 @@ export interface UserReducer {
 }
 
 const initialState = {
-  userText: '',
+  userText: ''
 };
 
 const userReducer = (
@@ -19,7 +19,7 @@ const userReducer = (
     case ACTION_TYPES.USER_INPUT:
       return {
         ...state,
-        userText: action.payload,
+        userText: action.payload
       };
     default:
       return state;

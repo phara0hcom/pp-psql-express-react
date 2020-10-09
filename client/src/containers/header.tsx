@@ -5,7 +5,7 @@ import { RootState } from '../store/reducers';
 
 const mapStateToProps = (state: RootState) => {
   return {
-    isAuthenticated: state.authReducer.isAuthenticated,
+    isAuthenticated: state.authReducer.isAuthenticated
   };
 };
 

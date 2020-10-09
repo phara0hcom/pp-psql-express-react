@@ -17,7 +17,7 @@ const RenderList: React.FC = () => {
   const [items, setItems] = useState([
     { id: 1, text: 'text 1', num: 10, bool: true },
     { id: 2, text: 'text 2', num: 20, bool: false },
-    { id: 3, text: 'text 3', num: 30, bool: true },
+    { id: 3, text: 'text 3', num: 30, bool: true }
   ]);
 
   return (

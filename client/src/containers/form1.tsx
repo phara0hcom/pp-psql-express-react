@@ -6,12 +6,12 @@ import { RootState } from '../store/reducers';
 
 const mapStateToProps = (state: RootState) => {
   return {
-    userText: state.userReducer.userText,
+    userText: state.userReducer.userText
   };
 };
 
 const mapDispatchToProps = {
-  inputActionCreator: (text: string) => ACTIONS.user_input(text),
+  inputActionCreator: (text: string) => ACTIONS.user_input(text)
 };
 
 const connector = connect(mapStateToProps, mapDispatchToProps);

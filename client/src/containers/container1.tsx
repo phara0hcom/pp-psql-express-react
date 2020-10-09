@@ -7,7 +7,7 @@ import { RootState } from '../store/reducers';
 const mapStateToProps = (state: RootState) => {
   return {
     stateProp1: state.reducer1.stateProp1,
-    userText: state.userReducer.userText,
+    userText: state.userReducer.userText
   };
 };
 
@@ -15,7 +15,7 @@ const mapDispatchToProps = {
   action1: () => ACTIONS.SUCCESS,
   action2: () => ACTIONS.FAILURE,
   actionCreator1: () => ACTIONS.success(),
-  actionCreator2: () => ACTIONS.failure(),
+  actionCreator2: () => ACTIONS.failure()
 };
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -28,7 +28,7 @@ const Container1: React.FC<PropsFromRedux> = ({
   action1,
   action2,
   actionCreator1,
-  actionCreator2,
+  actionCreator2
 }) => {
   return (
     <div>

@@ -5,7 +5,7 @@ export interface Reducer1 {
 }
 
 const initialState: Reducer1 = {
-  stateProp1: false,
+  stateProp1: false
 };
 
 const reducer1 = (
@@ -18,12 +18,12 @@ const reducer1 = (
     case ACTION_TYPES.SUCCESS:
       return {
         ...state,
-        stateProp1: true,
+        stateProp1: true
       };
     case ACTION_TYPES.FAILURE:
       return {
         ...state,
-        stateProp1: false,
+        stateProp1: false
       };
     default:
       return state;

@@ -12,7 +12,7 @@ export interface RootState {
 const rootReducer = combineReducers({
   reducer1,
   authReducer,
-  userReducer,
+  userReducer
 });
 
 export default rootReducer;
