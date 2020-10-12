@@ -6,6 +6,7 @@ const logger = require('morgan');
 
 const postsRoutes = require('./routes/posts');
 const commentsRoutes = require('./routes/comments');
+const userRoutes = require('./routes/user');
 
 const app = express();
 
@@ -17,5 +18,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/posts', postsRoutes);
 app.use('/api/comments', commentsRoutes);
+app.use('/api/user', userRoutes);
 
 module.exports = app;
