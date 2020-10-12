@@ -7,30 +7,32 @@ x-common-variables: &common-variables
   POSTGRES_DB: postgresdb
 
 services:
-  postgres:
-    image: postgres:latest
+  database:
+    image: postgres:13.0
     build: ./db
     restart: always
     ports:
       - 5432:5432
     environment:
       <<: *common-variables
+      listen_addresses: "*"
     volumes:
       - ./db/schema.sql:/docker-entrypoint-initdb.d/schema.sql
   server:
     build: ./server
     depends_on:
-      - postgres
+      - database
     expose:
       - 8000
     environment:
       <<: *common-variables
+      POSTGRES_HOST_IP: database
     ports:
       - 8000:8000
     volumes:
-      - ./server:/server
+      - ./server:/app
     links:
-      - postgres
+      - database
     command: npm start
   client:
     build: ./client
