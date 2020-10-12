@@ -5,7 +5,7 @@ const pool = new Pool({
   host: process.env.POSTGRES_HOST_IP,
   database: process.env.POSTGRES_DB,
   password: process.env.POSTGRES_PASSWORD,
-  port: 5432
-})
+  port: 5432,
+});
 
-module.exports = pool
+module.exports = pool;
