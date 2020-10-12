@@ -5,19 +5,19 @@ import Container1 from './containers/container1';
 import Header from './containers/header';
 import Profile from './containers/profile';
 import Form1 from './containers/form1';
-import RenderList from './containers/renderlist';
+import RenderList from './containers/renderList.tsx';
 
 import Component1 from './functional/component1';
 import Callback from './functional/callback';
-import PrivateComponent from './functional/privatecomponent';
-import UnAuthRedirect from './functional/unauthredirect';
+import PrivateComponent from './functional/privateComponent';
+import UnAuthRedirect from './functional/unAuthRedirect';
 import Home from './functional/home';
-import RenderListItem from './functional/renderlistitem';
+import RenderListItem from './functional/renderListItem.tsx';
 
 import * as ACTIONS from './store/authReducer/actions';
 
 import Auth from './utils/auth';
-import AuthCheck from './utils/authcheck';
+import AuthCheck from './utils/authCheck';
 import history from './utils/history';
 
 import { Router, Route, Switch, Redirect } from 'react-router';
@@ -63,21 +63,32 @@ class Routes extends Component {
           <div>
             <Header auth={auth} />
             <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/form1" component={Form1} />
+              <Route exact name="home" path="/" component={Home} />
+              <Route exact name="form1" path="/form1" component={Form1} />
               <Route
                 exact
+                name="auth"
                 path="/container1"
                 render={() => <Container1 auth={auth} />}
               />
               <Route
-                path="/authcheck"
+                name="authCheck"
+                path="/authCheck"
                 render={() => <AuthCheck auth={auth} />}
               />
-              <Route path="/redirect" component={UnAuthRedirect} />
-              <Route path="/renderlist" component={RenderList} />
+              <Route
+                name="UnAuthRedirect"
+                path="/redirect"
+                component={UnAuthRedirect}
+              />
+              <Route
+                name="RenderList"
+                path="/renderList"
+                component={RenderList}
+              />
 
               <Route
+                name="callback"
                 path="/callback"
                 render={(props) => {
                   handleAuthentication(props);
@@ -85,14 +96,19 @@ class Routes extends Component {
                 }}
               />
               <Route
+                name="component1"
                 path="/component1"
                 render={(props) => <Component1 {...props} />}
               />
 
-              <Route path="/listitem/:id" component={RenderListItem} />
+              <Route
+                name="component1"
+                path="/listItem/:id"
+                component={RenderListItem}
+              />
 
               <PrivateRoute
-                path="/privateroute"
+                path="/privateRoute"
                 auth={auth}
                 component={PrivateComponent}
               />

@@ -25,7 +25,7 @@ const RenderList: React.FC = () => {
       {items.map((listItem) => (
         <div key={listItem.id}>
           <Link
-            to={{ pathname: '/listitem/' + listItem.id, state: { listItem } }}
+            to={{ pathname: '/listItem/' + listItem.id, state: { listItem } }}
             style={{ marginTop: '25px', padding: '5px' }}
           >
             List Item {listItem.id}
@@ -38,4 +38,4 @@ const RenderList: React.FC = () => {
   );
 };
 
-export default connector(RenderList);
+export default RenderList;

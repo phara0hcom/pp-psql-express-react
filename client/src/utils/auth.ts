@@ -31,7 +31,7 @@ export default class Auth {
 
         this.getProfile();
         setTimeout(() => {
-          history.replace('/authcheck');
+          history.replace('/authCheck');
         }, 2000);
       } else {
         console.log(err);
@@ -64,7 +64,7 @@ export default class Auth {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expiresAt');
     setTimeout(() => {
-      history.replace('/authcheck');
+      history.replace('/authCheck');
     }, 200);
   };
 

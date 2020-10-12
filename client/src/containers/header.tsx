@@ -31,10 +31,10 @@ const Header: React.FC<PropsFromRedux> = ({ isAuthenticated }) => {
       <Link to="/form1" style={{ padding: '5px' }}>
         Form 1
       </Link>
-      <Link to="/renderlist" style={{ padding: '5px' }}>
+      <Link to="/renderList" style={{ padding: '5px' }}>
         List
       </Link>
-      <Link to="/privateroute" style={{ padding: '5px' }}>
+      <Link to="/privateRoute" style={{ padding: '5px' }}>
         Private Route
       </Link>
       {!isAuthenticated ? (
