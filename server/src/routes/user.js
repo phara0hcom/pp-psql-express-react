@@ -4,8 +4,8 @@ const pool = require('../db');
 const router = express.Router();
 
 router.post('/create', (req, res, next) => {
-  const { profile } = req.body;
-  const values = [profile.username, profile.email, profile.email_verified];
+  const { username, email, email_verified } = req.body;
+  const values = [username, email, email_verified];
   pool.query(
     `INSERT INTO users(username, email, email_verified, date_created)
     VALUES($1, $2, $3, NOW())
@@ -22,7 +22,8 @@ router.post('/create', (req, res, next) => {
 });
 
 router.get('/get', (req, res, next) => {
-  const email = String(req.body.email);
+  const email = String(req.query.email);
+  console.log({ email });
   pool.query(
     `SELECT * FROM users
     WHERE email = $1`,
@@ -31,6 +32,7 @@ router.get('/get', (req, res, next) => {
       if (q_err) {
         return next(q_err);
       } else {
+        console.log({ q_res });
         res.json(q_res.rows);
       }
     }
@@ -47,7 +49,7 @@ router.get('/posts/:user_id', (req, res, next) => {
       if (q_err) {
         return next(q_err);
       } else {
-        res.json(q_res.rows);
+        res.json(q_res.rows[0]);
       }
     }
   );
