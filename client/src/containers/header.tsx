@@ -1,26 +1,9 @@
 import React from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import { Link } from 'react-router-dom';
-import { connect, ConnectedProps } from 'react-redux';
-import { RootState } from '../store/';
-import Auth from '../utils/auth';
 
-const mapStateToProps = (state: RootState) => {
-  return {
-    isAuthenticated: state.authReducer.isAuthenticated
-  };
-};
-
-const connector = connect(mapStateToProps);
-
-type PropsFromRedux = ConnectedProps<typeof connector>;
-
-interface PropsFromParent {
-  auth: Auth;
-}
-
-type HeaderProps = PropsFromRedux & PropsFromParent;
-
-const Header: React.FC<HeaderProps> = ({ isAuthenticated }) => {
+const Header: React.FC = () => {
+  const { isAuthenticated, logout, loginWithRedirect } = useAuth0();
   return (
     <div>
       <Link to="/" style={{ padding: '5px' }}>
@@ -45,27 +28,14 @@ const Header: React.FC<HeaderProps> = ({ isAuthenticated }) => {
         Private Route
       </Link>
       {!isAuthenticated ? (
-        <button
-          onClick={() => {
-            // auth.login()
-          }}
-        >
-          Login
-        </button>
+        <button onClick={loginWithRedirect}>Login</button>
       ) : (
-        <button
-          onClick={() => {
-            // auth.logout()
-          }}
-        >
+        <button onClick={() => logout({ returnTo: window.location.origin })}>
           Logout
         </button>
       )}
-      <br />
-      <br />
-      <br />
     </div>
   );
 };
 
-export default connector(Header);
+export default Header;
