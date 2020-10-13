@@ -13,7 +13,7 @@ export const login_failure = () => {
   };
 };
 
-export const addProfile = (profile: Profile) => {
+export const addProfile = (profile: Profile | {}) => {
   return {
     type: ACTION_TYPES.ADD_PROFILE,
     payload: profile

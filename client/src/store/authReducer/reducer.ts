@@ -1,17 +1,30 @@
 import * as ACTION_TYPES from './actionTypes';
 
+export type DbProfile = {
+  uid: string;
+  username: string;
+  email: string;
+  email_verified: boolean;
+  date_created: string;
+  last_login: string;
+};
+
 export type Profile = {
   nickname: string;
   picture: string;
-  email: string;
   name: string;
+  uid: string;
+  username: string;
+  email: string;
   email_verified: boolean;
+  date_created: string;
+  last_login: string;
 };
 
 export interface AuthReducer {
   isAuthenticated: boolean;
   profile: Profile | null;
-  dbProfile: Profile | null;
+  dbProfile: DbProfile | null;
 }
 
 const initialState: AuthReducer = {

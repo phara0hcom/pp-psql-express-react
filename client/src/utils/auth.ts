@@ -1,4 +1,5 @@
 import auth0 from 'auth0-js';
+import { Profile } from '../store/authReducer/reducer';
 import history from './history';
 
 export default class Auth {
@@ -10,7 +11,7 @@ export default class Auth {
     scope: 'openid profile email'
   });
 
-  userProfile = {};
+  userProfile: Profile | {} = {};
 
   login = () => {
     this.auth0.authorize();

@@ -3,6 +3,7 @@ import { connect, ConnectedProps } from 'react-redux';
 
 import * as ACTIONS from '../store/reducer/actions';
 import { RootState } from '../store/';
+import Auth from '../utils/auth';
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -22,7 +23,13 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-const Container1: React.FC<PropsFromRedux> = ({
+interface PropsFromParent {
+  auth: Auth;
+}
+
+type Container1Props = PropsFromRedux & PropsFromParent;
+
+const Container1: React.FC<Container1Props> = ({
   stateProp1,
   userText,
   action1,

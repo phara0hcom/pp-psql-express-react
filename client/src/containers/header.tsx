@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect, ConnectedProps } from 'react-redux';
 import { RootState } from '../store/';
+import Auth from '../utils/auth';
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -13,7 +14,13 @@ const connector = connect(mapStateToProps);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-const Header: React.FC<PropsFromRedux> = ({ isAuthenticated }) => {
+interface PropsFromParent {
+  auth: Auth;
+}
+
+type HeaderProps = PropsFromRedux & PropsFromParent;
+
+const Header: React.FC<HeaderProps> = ({ isAuthenticated }) => {
   return (
     <div>
       <Link to="/" style={{ padding: '5px' }}>
